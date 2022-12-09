@@ -4,7 +4,7 @@ const appId = "caff73215369d913dec8fe3f30a23ddf";
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
+let newDate = d.getMonth() + 1 + "/" + d.getDate() + "/" + d.getFullYear();
 
 // get the weather from the api 
 const getWeatherData = async (url) => {
@@ -69,7 +69,7 @@ const updateUI = async () => {
     try {
         const data = await request.json()
         document.getElementById('date').innerHTML = data.date;
-        document.getElementById('temp').innerHTML = data.temperature;
+        document.getElementById('temp').innerHTML = Math.round(data.temperature)+ ' degrees';
         document.getElementById('content').innerHTML = data.felling;
     }
     catch (error) {
